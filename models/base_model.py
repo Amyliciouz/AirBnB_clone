@@ -1,6 +1,7 @@
 #!/usr/bin/python3
+import models
 import uuid
-import datetime
+from datetime import datetime
 
 """The Base Model:contains instances and methods
 for other classes"""
@@ -9,11 +10,20 @@ for other classes"""
 class BaseModel:
     """ class definition """
 
-    def __init__(self):
-        """ class instantiation"""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+    def __init__(self, *args, **kwargs):
+        """ class instantiation using args and kwargs"""
+	if kwargs is not None:
+            for key,value in kwargs.items():
+	  	if key == "created_at" or key == "updated_at":
+        	    value = datetime.strptime(value, %Y-%m-%dT%H:%M:%S.%f)
+                if key == "__class__":
+		    continue
+		setattr(self, key, value)
+
+	else:
+		self.id = str(uuid.uuid4())
+		self.created_at = datetime.now()
+        	self.updated_at = datetime.now()
 
     def __str__(self):
         """prints [<class name>] (<self.id>) <self.__dict__>"""
