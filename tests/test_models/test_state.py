@@ -6,7 +6,7 @@ from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
-import unittest 
+import unittest
 
 
 class test_state(unittest.TestCase):
