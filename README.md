@@ -1,1 +1,1 @@
-AlX team project: Airbnb Clone
+AlX team project - Airbnb Clone
